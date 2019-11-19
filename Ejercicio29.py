@@ -44,7 +44,7 @@ for i in range(9):
     Psi2 = difusion[col,:]
     Psi2 = np.delete(Psi2,0)
 
-    plt.plot(x,Psi2,alpha=(i+1)/9,color='g',label='t = '+str(difusion[col,0]))
+    plt.plot(x,Psi2,alpha=(i+1)/9,color='k',label='t = '+str(difusion[col,0]))
     
 plt.grid()
 plt.legend(loc=1)
