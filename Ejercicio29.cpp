@@ -8,24 +8,28 @@ double S = 1;
 double T = 1;
 double Xmin = -1;
 double Xmax = 1;
-int Nt = 1000;
+int Nt = 450;
 int Nx = 30;
-double dT = T/Nt;
-double dX = (Xmax-Xmin)/Nx;
 
-int FTCS(double **PSI);
+int FTCS(int Nt,int Nx,string nombre);
 
 int main(){
-    double **PSI = new double *[Nt+1];
-    for (int i=0;i<=Nt;i++){
-        PSI[i] =new double[Nx+1];
-    }
-    FTCS(PSI);
+    string nombre = "difusion.dat";
+    FTCS(Nt,Nx,nombre);
     
     return 0;
 }
 
-int FTCS(double **PSI){
+int FTCS(int Nt,int Nx,string nombre){
+    
+    double **PSI = new double *[Nt+1];
+    for (int i=0;i<=Nt;i++){
+        PSI[i] =new double[Nx+1];
+    }
+    
+    double dT = T/Nt;
+    double dX = (Xmax-Xmin)/Nx;
+    
     for(int i=0; i<=Nt; i++){
         for(int j=0; j<=Nx; j++){
             if(i==0){
@@ -45,7 +49,7 @@ int FTCS(double **PSI){
     }
     
     ofstream outfile;
-    outfile.open("difusion.dat");
+    outfile.open(nombre);
     
     double time = 0;
     
