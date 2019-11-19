@@ -17,7 +17,10 @@ Matrix = np.delete(difusion,0,1)
 Matrix = np.delete(Matrix,-1,0)
 
 plt.subplot(1,3,1)
-plt.imshow(Matrix,aspect=0.07)
+plt.imshow(Matrix,extent=[-1,1,1,0],aspect=2.0)
+plt.colorbar()
+plt.xlabel('X (m)')
+plt.ylabel('Time (s)')
 plt.title("$\Psi$ ($m^2/s$)")
 
 plt.subplot(1,3,3)
@@ -25,7 +28,7 @@ plt.subplot(1,3,3)
 Psi1 = difusion[:,16]
 Psi1 = np.delete(Psi1,-1)
 
-plt.plot(time,Psi1,c='k')
+plt.plot(time,Psi1,c='g')
 plt.grid()
 plt.xlabel('Time (s)')
 plt.ylabel('$\Psi$ ($m^2/s$)')
@@ -41,7 +44,7 @@ for i in range(9):
     Psi2 = difusion[col,:]
     Psi2 = np.delete(Psi2,0)
 
-    plt.plot(x,Psi2,label='t = '+str(difusion[col,0]))
+    plt.plot(x,Psi2,alpha=(i+1)/9,color='g',label='t = '+str(difusion[col,0]))
     
 plt.grid()
 plt.legend(loc=1)
