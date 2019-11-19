@@ -8,8 +8,8 @@ double S = 1;
 double T = 1;
 double Xmin = -1;
 double Xmax = 1;
-int Nt = 100;
-int Nx = 11;
+int Nt = 1000;
+int Nx = 30;
 double dT = T/Nt;
 double dX = (Xmax-Xmin)/Nx;
 
@@ -48,6 +48,7 @@ int FTCS(double **PSI){
     outfile.open("difusion.dat");
     
     double time = 0;
+    
     for(int i=0; i<=Nt; i++){
         outfile<<time<<"\t";
         time += dT;
@@ -58,11 +59,11 @@ int FTCS(double **PSI){
     }
     
     double x = -1;
+    outfile<<0<<"\t";
     for(int j=0; j<=Nx; j++){
         outfile<<x<<"\t";
         x += dX;
     }
-    outfile<<endl;
     outfile.close();
     
     return 0;
